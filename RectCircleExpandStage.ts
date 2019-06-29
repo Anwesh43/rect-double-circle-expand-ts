@@ -57,7 +57,7 @@ class DrawingUtil {
         DrawingUtil.drawCircle(context, x, 0, r)
         for (var j = 0; j < 2; j++) {
             context.save()
-            context.translate(0, -r + 2 * r * i)
+            context.translate(0, -r + 2 * r * j)
             DrawingUtil.drawLine(context, 0, 0, x, 0)
             context.restore()
         }
@@ -109,7 +109,7 @@ class RectCircleExpandStage {
         }
     }
 
-    static initCanvas() {
+    static init() {
         const stage = new RectCircleExpandStage()
         stage.initCanvas()
         stage.render()
