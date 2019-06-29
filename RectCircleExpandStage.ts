@@ -225,3 +225,25 @@ class RectCircleExpand {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    rce : RectCircleExpand = new RectCircleExpand()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.rce.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.rce.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.rce.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
